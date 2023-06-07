@@ -21,13 +21,13 @@ func makeDecodingMap(encodingMap string) map[byte]int {
 	for i := 0; i < len(encodingMap); i++ {
 		decodingMap[encodingMap[i]] = i
 	}
-	
+
 	return decodingMap
 }
 
 func EncodeID(input string) string {
 	var result strings.Builder
-	input = input[10:15]
+	input = input[10:17]
 	for i := 0; i < len(input); i++ {
 		index := int(input[i]) % len(encodingMap)
 		result.WriteByte(encodingMap[index])
@@ -38,7 +38,7 @@ func EncodeID(input string) string {
 
 func DecodeID(input string) string {
 	var result strings.Builder
-	input = input[10:15]
+	input = input[10:17]
 	for i := 0; i < len(input); i++ {
 		index := decodingMap[input[i]]
 		result.WriteByte(byte(index))
