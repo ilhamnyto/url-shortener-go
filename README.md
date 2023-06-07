@@ -19,11 +19,14 @@ CREATE TABLE IF NOT EXISTS users (
 ```
 ## Create Posts Table
 ```
+
  CREATE TABLE IF NOT EXISTS urls (
             id serial primary key,
+            ulid varchar(100) NOT NULL,
             user_id int NOT NULL,
             long_url text NOT NULL,
-            short_url text NOT NULL,
+            short_url text,
+            visits int default 0,
             created_at timestamp,
             CONSTRAINT fk_urls
             FOREIGN KEY(user_id)

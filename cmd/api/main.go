@@ -24,5 +24,10 @@ func main() {
 	userController := controller.NewUserController(userService)
 	routes.UserRouter(e, userController)
 
+	urlRepository := repositories.NewUrlRepository(db)
+	urlService := services.NewUrlServices(urlRepository)
+	urlController := controller.NewUrlController(urlService)
+	routes.UrlRouter(e, *urlController)
+
 	e.Logger.Fatal(e.Start(os.Getenv("HOST") + ":" + os.Getenv("PORT")))
 }
