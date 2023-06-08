@@ -16,7 +16,7 @@ func main() {
 	config.LoadConfig(".env")
 
 	db := database.ConnectDB()
-
+	database.MigrateDB(db)
 	e := echo.New()
 
 	userRepository := repositories.NewUserRepository(db)
